@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/NUll-O7">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=2000&pause=1000&color=4CF54F&center=true&vCenter=true&multiline=true&repeat=false&width=435&height=100&lines=Hey+partners+in+code+%F0%9F%91%8B" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=2000&pause=1000&color=4CF54F&center=true&vCenter=true&multiline=true&repeat=false&width=435&height=100&lines=Hey+Partners+In+Code+%F0%9F%91%8B" alt="Typing SVG" />
   </a>
 </p>
 
