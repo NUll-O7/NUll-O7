@@ -53,18 +53,6 @@ Building full-stack web apps always learning new tech 3 years Python · 2 years 
 
 ---
 
-### Contribution Snake
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NUll-O7/NUll-O7/output/github-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NUll-O7/NUll-O7/output/github-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/NUll-O7/NUll-O7/output/github-snake-dark.svg" />
-  </picture>
-</p>
-
----
-
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=4CF54F&height=120&section=footer"/>
 </p>
