@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/NUll-O7">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=2000&pause=1000&color=4CF54F&center=true&vCenter=true&multiline=true&repeat=false&width=435&height=100&lines=Hey+partners+in+code+%F0%9F%91%8B;Building+full-stack+web+apps;Always+learning+new+tech" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=2000&pause=1000&color=4CF54F&center=true&vCenter=true&multiline=true&repeat=false&width=435&height=100&lines=Hey+partners+in+code+%F0%9F%91%8B" alt="Typing SVG" />
   </a>
 </p>
 
@@ -13,7 +13,7 @@
 
 ---
 
-3 years Python · 2 years Java · 2+ years shipping full-stack web applications. I enjoy building end-to-end solutions, and I am constantly exploring new frameworks, architectures, and AI tools to expand my skill set and build even better systems.
+Building full-stack web apps always learning new tech 3 years Python · 2 years Java · 2+ years shipping full-stack web applications. I enjoy building end-to-end solutions, and I am constantly exploring new frameworks, architectures, and AI tools to expand my skill set and build even better systems.
 
 ---
 
