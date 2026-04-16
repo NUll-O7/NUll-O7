@@ -10,7 +10,6 @@
   borderRadius: 12,
   border: '1px solid #1e2d3d',
 }}>
-
   <style>{`
     @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -65,56 +64,52 @@
     .rc25{animation:rain-fall 2.7s linear -1.0s infinite}
   `}</style>
 
-  {/* Matrix rain — rect-based columns, no <text> nodes (Satori-safe) */}
+  {/* Full-canvas SVG — matrix rain + ALL animated elements */}
   <svg width="860" height="620" style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}
     xmlns="http://www.w3.org/2000/svg">
+
+    {/* Matrix rain columns — rect-based, no <text> */}
     {[
-      {x:30,  cls:'rc0',  op:0.13},
-      {x:62,  cls:'rc1',  op:0.17},
-      {x:94,  cls:'rc2',  op:0.11},
-      {x:126, cls:'rc3',  op:0.15},
-      {x:158, cls:'rc4',  op:0.12},
-      {x:190, cls:'rc5',  op:0.18},
-      {x:222, cls:'rc6',  op:0.10},
-      {x:254, cls:'rc7',  op:0.16},
-      {x:286, cls:'rc8',  op:0.13},
-      {x:318, cls:'rc9',  op:0.14},
-      {x:350, cls:'rc10', op:0.11},
-      {x:382, cls:'rc11', op:0.17},
-      {x:414, cls:'rc12', op:0.12},
-      {x:446, cls:'rc13', op:0.15},
-      {x:478, cls:'rc14', op:0.10},
-      {x:510, cls:'rc15', op:0.16},
-      {x:542, cls:'rc16', op:0.13},
-      {x:574, cls:'rc17', op:0.18},
-      {x:606, cls:'rc18', op:0.11},
-      {x:638, cls:'rc19', op:0.14},
-      {x:670, cls:'rc20', op:0.12},
-      {x:702, cls:'rc21', op:0.17},
-      {x:734, cls:'rc22', op:0.10},
-      {x:766, cls:'rc23', op:0.15},
-      {x:798, cls:'rc24', op:0.13},
-      {x:830, cls:'rc25', op:0.16},
+      {x:30,  cls:'rc0',  op:0.13},{x:62,  cls:'rc1',  op:0.17},{x:94,  cls:'rc2',  op:0.11},
+      {x:126, cls:'rc3',  op:0.15},{x:158, cls:'rc4',  op:0.12},{x:190, cls:'rc5',  op:0.18},
+      {x:222, cls:'rc6',  op:0.10},{x:254, cls:'rc7',  op:0.16},{x:286, cls:'rc8',  op:0.13},
+      {x:318, cls:'rc9',  op:0.14},{x:350, cls:'rc10', op:0.11},{x:382, cls:'rc11', op:0.17},
+      {x:414, cls:'rc12', op:0.12},{x:446, cls:'rc13', op:0.15},{x:478, cls:'rc14', op:0.10},
+      {x:510, cls:'rc15', op:0.16},{x:542, cls:'rc16', op:0.13},{x:574, cls:'rc17', op:0.18},
+      {x:606, cls:'rc18', op:0.11},{x:638, cls:'rc19', op:0.14},{x:670, cls:'rc20', op:0.12},
+      {x:702, cls:'rc21', op:0.17},{x:734, cls:'rc22', op:0.10},{x:766, cls:'rc23', op:0.15},
+      {x:798, cls:'rc24', op:0.13},{x:830, cls:'rc25', op:0.16},
     ].map(function(col) {
       return (
         <g key={col.x} className={col.cls} style={{ opacity: col.op }}>
           {[0,1,2,3,4].map(function(i) {
             return (
-              <rect
-                key={i}
-                x={col.x - 3}
-                y={10 + i * 18}
-                width={i === 4 ? 8 : 5}
-                height={i === 4 ? 8 : 3}
-                rx="1"
-                fill={i === 4 ? '#afffdf' : '#00ff9d'}
-                opacity={1 - i * 0.15}
-              />
+              <rect key={i} x={col.x - 3} y={10 + i * 18}
+                width={i === 4 ? 8 : 5} height={i === 4 ? 8 : 3} rx="1"
+                fill={i === 4 ? '#afffdf' : '#00ff9d'} opacity={1 - i * 0.15} />
             )
           })}
         </g>
       )
     })}
+
+    {/* Pulsing green dot (top-left traffic light) */}
+    <circle id="dot-g" cx="48" cy="40" r="4" fill="#00ff9d" />
+
+    {/* Glitch layers — colored rect slices behind the name text */}
+    <g id="glitch1" style={{ opacity: 0 }}>
+      <rect x="28" y="78" width="200" height="14" fill="#00bfff" opacity="0.75" />
+      <rect x="28" y="96" width="170" height="10" fill="#00bfff" opacity="0.55" />
+      <rect x="28" y="110" width="190" height="8"  fill="#00bfff" opacity="0.4" />
+    </g>
+    <g id="glitch2" style={{ opacity: 0 }}>
+      <rect x="31" y="80" width="180" height="12" fill="#ff003c" opacity="0.65" />
+      <rect x="28" y="98" width="150" height="9"  fill="#ff003c" opacity="0.45" />
+    </g>
+
+    {/* Blinking cursor — positioned at the terminal prompt line */}
+    <rect id="cursor" x="258" y="337" width="8" height="13" fill="#00ff9d" />
+
   </svg>
 
   {/* Main content layer */}
@@ -129,8 +124,9 @@
       display: 'flex', flexDirection: 'column',
       background: 'rgba(10,12,15,0.88)',
     }}>
+      {/* Traffic lights — dot-g is now in SVG, these two are static */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
-        <div id="dot-g" style={{ width: 8, height: 8, borderRadius: '50%', background: '#00ff9d' }} />
+        <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#00ff9d' }} />
         <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ffd700' }} />
         <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff003c' }} />
         <span style={{ marginLeft: 8, fontSize: 10, color: '#4a6070', letterSpacing: 2 }}>SYSTEM_ONLINE · NODE: GITHUB/NUll-O7</span>
@@ -142,10 +138,9 @@
         </span>
       </div>
 
+      {/* Name — glitch layers are SVG rects behind this, positioned by coordinates */}
       <div style={{ display: 'flex', position: 'relative' }}>
         <span style={{ fontFamily: 'monospace', fontSize: 42, fontWeight: 900, color: '#00ff9d', letterSpacing: 5, lineHeight: 1 }}>NUll-O7</span>
-        <span id="glitch1" style={{ position: 'absolute', top: 0, left: 0, fontFamily: 'monospace', fontSize: 42, fontWeight: 900, color: '#00bfff', letterSpacing: 5, lineHeight: 1, opacity: 0 }}>NUll-O7</span>
-        <span id="glitch2" style={{ position: 'absolute', top: 0, left: 0, fontFamily: 'monospace', fontSize: 42, fontWeight: 900, color: '#ff003c', letterSpacing: 5, lineHeight: 1, opacity: 0 }}>NUll-O7</span>
       </div>
 
       <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
@@ -194,9 +189,9 @@
               </div>
             )
           })}
+          {/* Cursor row — the SVG rect cursor overlaps this prompt visually */}
           <div style={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
             <span style={{ color: '#00ff9d' }}>{'> '}</span>
-            <div id="cursor" style={{ width: 8, height: 14, background: '#00ff9d', display: 'flex', marginLeft: 2 }} />
           </div>
         </div>
       </div>
